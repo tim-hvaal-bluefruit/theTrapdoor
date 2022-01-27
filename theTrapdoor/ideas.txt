@@ -1,0 +1,65 @@
+Main loop
+  
+  check if player has seen the room
+    print room
+  
+  check available player options
+    look (always) 
+    inv (always) 
+    get <item> - check if room has any items available
+    open <door> - check if room has any doors available
+  
+  print the list
+  parse player response
+    check if first word is in player options
+      if not repeat options
+
+    if first word == look
+      location changed
+      skip out of look
+
+    if first word == get
+      check item in room == True
+        add to pockets
+        print item description
+        item in room is false
+      if false say "i can't see one of those"
+    
+    if first word == use
+    use item function
+      check item is in list of game items
+      check given item is in pockets
+        if true
+      check item is in pockets == True
+        print item use description (you light the match)
+        run use match function (light source on, )
+
+
+
+Choose your own adventure game loosely based on the trapdoor
+could be come like a dark room!
+
+DONE
+Part 1 
+turn a python file into an executable
+Figure out how to access dictionary in dictionary
+Clean up how actions are configures
+
+TODO
+SIMPIFY - don't need key to unlock door or anything
+locations should have events - truth tables?
+remember to code in ten minute bites!
+
+use sleep to build suspense
+truth tables!
+Part 2...
+  key to open another door, human skull in there, table with blood on it and a large spider scuttling around, get spider, get skull, get knife, can't do anything further
+  check trapdoor every loop
+  if open count to five. If shut, reset the count
+  trapdoor function runs each loop, player msg depending on the count
+  if monster comes out you get eaten
+  if you close the trapdoor on count of five you hit the monster on the head and win
+  winning message. You closed the door just in time just a huge slimy creature was coming up through the door. The weight of the door must have crushed the monsters head,
+  you hear a loud thud a few seconds later as the beast hit the floor some way below. 
+  You've won the game, but always remember - stay away from that trapdoor... cuz there's something down there
+  Easter egg... what's your name - if answer = Burk print end_screen.

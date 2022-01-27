@@ -1,0 +1,210 @@
+
+// -----------------------------------------------------
+// FLUIDICS CALIBRATION EXAMPLE
+// -----------------------------------------------------
+
+//DEFINE_FFF_GLOBALS;
+
+//namespace
+//{
+//    // custom fake prototypes
+//
+//    uint8_t * custom_fake_erased_FLASH_Read(uint8_t* fake_dest, uint32_t, uint16_t)
+//    {
+//        uint8_t * block_byte_p = fake_dest;
+//        fluidics_cal_block_t fluidics_cal_block = fluidics_cal_block_t();
+//
+//        for (uint8_t current_byte_u8 = 0u; current_byte_u8 < (uint8_t)sizeof(fluidics_cal_block); current_byte_u8++)
+//        {
+//            *block_byte_p = 0xFFu;
+//            block_byte_p++;
+//        }
+//        fluidics_cal_block.cal = fluidics_cal_data_t();
+//        return fake_dest;
+//    }
+//
+//    uint8_t * custom_fake_FLASH_Read(uint8_t* fake_dest, uint32_t, uint16_t)
+//    {
+//        fluidics_cal_block_t *fluidics_cal_block = (fluidics_cal_block_t *)fake_dest;
+//        fluidics_cal_block->cal = fluidics_cal_data_t{1, 2};
+//        fluidics_cal_block->crc_u8 = 0xAAu;
+//        return fake_dest;
+//    }
+//
+//    nrfx_err_t custom_fake_null_params_CRC8_compute(uint8_t *, uint8_t, uint8_t *)
+//    {
+//        return NRFX_ERROR_NULL;
+//    }
+//
+//    nrfx_err_t custom_fake_incorrect_CRC8_compute(uint8_t *, uint8_t, uint8_t * crc_pu8)
+//    {
+//        *crc_pu8 = 0xFFu;
+//        return NRFX_SUCCESS;
+//    }
+//
+//    nrfx_err_t custom_fake_CRC8_compute(uint8_t *, uint8_t, uint8_t * crc_pu8)
+//    {
+//        *crc_pu8 = 0xAAu;
+//        return NRFX_SUCCESS;
+//    }
+//
+//    void test_setup()
+//    {
+//        RESET_FAKE(PAP_set_subblock_data);
+//        RESET_FAKE(PAP_get_subblock_data);
+//        RESET_FAKE(FLASH_Read);
+//        RESET_FAKE(CRC8_compute);
+//        FFF_RESET_HISTORY();
+//    }
+//}
+//
+//class FLUIDICS_CALIBRATION : public testing::Test
+//{
+//public:
+//    void SetUp()
+//    {
+//        test_setup();
+//    }
+//};
+//
+//TEST_F(FLUIDICS_CALIBRATION, fill0_set__passes_expected_parameters_to_property_store)
+//{
+//    // Given
+//    fluidics_cal_t fluidics_cal{};
+//    PAP_set_subblock_data_fake.return_val = NRFX_ERROR_NULL;
+//
+//    // When
+//    nrfx_err_t err_code = FLUIDICS_CALIBRATION_fill0_set(&fluidics_cal);
+//
+//    // Then
+//    ASSERT_EQ(PAP_set_subblock_data_fake.arg0_val, PROPS_SUBBLOCK_FLUIDICS_E8);
+//    ASSERT_EQ(PAP_set_subblock_data_fake.arg1_val, PROPS_SUBBLOCK_SECTION_FLUIDICS_FILL0_CAL_E8);
+//    ASSERT_EQ(PAP_set_subblock_data_fake.arg2_val, &fluidics_cal);
+//    ASSERT_EQ(PAP_set_subblock_data_fake.arg3_val, true);
+//
+//    ASSERT_EQ(err_code, NRFX_ERROR_NULL);
+//}
+//
+//TEST_F(FLUIDICS_CALIBRATION, fill0_get__returns_NRFX_ERROR_NULL_when_passed_a_null_pointer)
+//{
+//    // Given
+//    fluidics_cal_t * fluidics_cal_ptr = nullptr;
+//    bool read_from_uicr_b = true;
+//
+//    // When
+//    nrfx_err_t err_code = FLUIDICS_CALIBRATION_fill0_get(fluidics_cal_ptr, read_from_uicr_b);
+//
+//    // Then
+//    ASSERT_EQ(err_code, NRFX_ERROR_NULL);
+//}
+//
+//TEST_F(FLUIDICS_CALIBRATION, fill0_get__reads_expected_parameters_from_property_store_when_read_from_uicr_is_false)
+//{
+//    // Given
+//    fluidics_cal_t fluidics_cal{};
+//    bool read_from_uicr_b = false;
+//
+//    // When
+//    nrfx_err_t err_code = FLUIDICS_CALIBRATION_fill0_get(&fluidics_cal, read_from_uicr_b);
+//
+//    // Then
+//    ASSERT_EQ(PAP_get_subblock_data_fake.arg0_val, PROPS_SUBBLOCK_FLUIDICS_E8);
+//    ASSERT_EQ(PAP_get_subblock_data_fake.arg1_val, PROPS_SUBBLOCK_SECTION_FLUIDICS_FILL0_CAL_E8);
+//    ASSERT_EQ(PAP_get_subblock_data_fake.arg2_val, &fluidics_cal);
+//
+//    ASSERT_EQ(err_code, NRFX_SUCCESS);
+//}
+//
+//TEST_F(FLUIDICS_CALIBRATION, fill0_get__reads_expected_parameters_from_UICR_when_read_from_uicr_is_true)
+//{
+//    // Given
+//    fluidics_cal_t fluidics_cal{};
+//    bool read_from_uicr_b = true;
+//
+//    // When
+//    nrfx_err_t err_code = FLUIDICS_CALIBRATION_fill0_get(&fluidics_cal, read_from_uicr_b);
+//
+//    // Then
+//    ASSERT_EQ(FLASH_Read_fake.call_count, 1u);
+//    ASSERT_EQ(FLASH_Read_fake.arg1_val, ATTR_DEVICE_V3_FLUIDICS_FILL0_CAL_START);
+//    ASSERT_EQ(FLASH_Read_fake.arg2_val, ATTR_DEVICE_V3_FLUIDICS_FILL0_CAL_SIZE);
+//
+//    ASSERT_EQ(err_code, NRFX_SUCCESS);
+//}
+//
+//TEST_F(FLUIDICS_CALIBRATION, fill0_get__returns_not_initialised_error_code_when_fluidics_calibration_block_not_initialised)
+//{
+//    // Given
+//    fluidics_cal_t fluidics_cal{};
+//    bool read_from_uicr_b = true;
+//    FLASH_Read_fake.custom_fake = custom_fake_erased_FLASH_Read;
+//
+//    // When
+//    nrfx_err_t err_code = FLUIDICS_CALIBRATION_fill0_get(&fluidics_cal, read_from_uicr_b);
+//
+//    // Then
+//    ASSERT_EQ(err_code, APP_GENERAL_NOT_INITIALIZED_ERROR);
+//}
+//
+//TEST_F(FLUIDICS_CALIBRATION, fill0_get__calls_CRC8_compute__when_fluidics_calibration_block_is_initialised)
+//{
+//    // Given
+//    fluidics_cal_t fluidics_cal{};
+//    bool read_from_uicr_b = true;
+//    FLASH_Read_fake.custom_fake = custom_fake_FLASH_Read;
+//
+//    // When
+//    nrfx_err_t err_code = FLUIDICS_CALIBRATION_fill0_get(&fluidics_cal, read_from_uicr_b);
+//
+//    // Then
+//    ASSERT_NE(CRC8_compute_fake.call_count, 0);
+//    ASSERT_EQ(err_code, APP_GENERAL_INVALID_CRC_ERROR);
+//}
+//
+//TEST_F(FLUIDICS_CALIBRATION, fill0_get__returns_CRC_compute__null_error_code_if_parameters_are_null)
+//{
+//    // Given
+//    fluidics_cal_t fluidics_cal{};
+//    bool read_from_uicr_b = true;
+//    FLASH_Read_fake.custom_fake = custom_fake_FLASH_Read;
+//    CRC8_compute_fake.custom_fake = custom_fake_null_params_CRC8_compute;
+//
+//    // When
+//    nrfx_err_t err_code = FLUIDICS_CALIBRATION_fill0_get(&fluidics_cal, read_from_uicr_b);
+//
+//    // Then
+//    ASSERT_EQ(err_code, NRFX_ERROR_NULL);
+//}
+//
+//TEST_F(FLUIDICS_CALIBRATION, fill0_get__returns_APP_GENERAL_INVALID_CRC_ERROR_when_crc_is_invalid)
+//{
+//    // Given
+//    fluidics_cal_t fluidics_cal{};
+//    bool read_from_uicr_b = true;
+//    FLASH_Read_fake.custom_fake = custom_fake_FLASH_Read;
+//    CRC8_compute_fake.custom_fake = custom_fake_incorrect_CRC8_compute;
+//
+//    // When
+//    nrfx_err_t err_code = FLUIDICS_CALIBRATION_fill0_get(&fluidics_cal, read_from_uicr_b);
+//
+//    // Then
+//    ASSERT_EQ(err_code, APP_GENERAL_INVALID_CRC_ERROR);
+//}
+//
+//TEST_F(FLUIDICS_CALIBRATION, fill0_get__sets_baseline_and_wiper_correctly_if_no_errors)
+//{
+//    // Given
+//    fluidics_cal_t fluidics_cal{};
+//    bool read_from_uicr_b = true;
+//    FLASH_Read_fake.custom_fake = custom_fake_FLASH_Read;
+//    CRC8_compute_fake.custom_fake = custom_fake_CRC8_compute;
+//
+//    // When
+//    nrfx_err_t err_code = FLUIDICS_CALIBRATION_fill0_get(&fluidics_cal, read_from_uicr_b);
+//
+//    // Then
+//    ASSERT_EQ(err_code, NRFX_SUCCESS);
+//    fluidics_cal_t* fluidics_cal_p = &fluidics_cal;
+//    EXPECT_EQ(fluidics_cal_p->baseline_mv, (uint16_t)(1 * 10));
+//    EXPECT_EQ(fluidics_cal_p->wiper_position, 2);
+//}

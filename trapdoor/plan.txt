@@ -1,0 +1,19 @@
+plan of action
+
+DONE  setup debug to run by hitting button from anywhere. 
+TODO  examine. always available. loop through -> room items, room interactive, inv - (display if available)
+TODO  google error codes as they come up - make notes
+TODO  bug - item descriptions need there own one if in inventory
+TODO  parlour items - crowbar, large knife, skull
+TODO  crowbar trapdoor, sets counter 7 moves.
+TODO  check timer - when 7 monster comes and knocks you out - game over
+TODO  close trapdoor, checks timer, if 7 hits monster on head, you win
+TODO  final easter egg, guess characters name, if Burk you get pic and sound playing
+TODO  package up into final playable package
+TODO  now i've made this, i can make something quite a lot better! but can i be bothered? yeah map it out!
+TODO  pygame shell!
+
+Everything now is much more straightforward!
+
+why can't i change the room easily? remember i was trying to set a variable to equal a string instead of a dict
+  KeyError: means you're trying to access an item that doesn't exist
