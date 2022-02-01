@@ -105,7 +105,7 @@ def move(first_word):
 def use_item(second_word):
 
   if second_word not in items.inv:
-    "i don't seem to have one of those"
+    print("i don't seem to have one of those")
     return
 
   for item in items.inv:
