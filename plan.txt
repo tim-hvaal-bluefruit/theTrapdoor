@@ -40,3 +40,18 @@ why can't i change the room easily? remember i was trying to set a variable to e
 # solved problem of dics containing references to other dicts - has to be set when the item is got
 # or could be set with an init method - better
 ######################
+
+
+use sleep to build suspense
+truth tables?
+Part 2...
+  key to open another door, human skull in there, table with blood on it and a large spider scuttling around, get spider, get skull, get knife, can't do anything further
+  check trapdoor every loop
+  if open count to five. If shut, reset the count
+  trapdoor function runs each loop, player msg depending on the count
+  if monster comes out you get eaten
+  if you close the trapdoor on count of five you hit the monster on the head and win
+  winning message. You closed the door just in time just a huge slimy creature was coming up through the door. The weight of the door must have crushed the monsters head,
+  you hear a loud thud a few seconds later as the beast hit the floor some way below. 
+  You've won the game, but always remember - stay away from that trapdoor... cuz there's something down there
+  Easter egg... what's your name - if answer = Burk print end_screen.

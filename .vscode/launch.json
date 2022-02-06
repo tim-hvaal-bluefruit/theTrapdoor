@@ -8,7 +8,7 @@
       "name": "Python: trapdoor",
       "type": "python",
       "request": "launch",
-      "program": "${workspaceFolder}/trapdoor/trapdoor.py",
+      "program": "${workspaceFolder}/trapdoor.py",
       "console": "integratedTerminal"
     },
     {
