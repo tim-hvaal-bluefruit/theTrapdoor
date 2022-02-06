@@ -1,3 +1,4 @@
+import sys
 import locations
 import items
 import helpers
@@ -14,12 +15,17 @@ def main():
     if locations.current_location['checked'] == False:
       helpers.look()
 
-    # make options text for debugging 
+    # show options - DEBUG 
     options_text = helpers.make_options_text()
 
     # ask player what to do
     player_answer = input(options_text).lower().strip()
-    
+
+    # quick quit - DEBUG
+    if player_answer == "q":
+      sys.exit()
+
+
     # parse answer to two words
     args = player_answer.split(' ')
     if len(args) > 2:

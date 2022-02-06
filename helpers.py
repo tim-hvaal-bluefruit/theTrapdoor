@@ -159,6 +159,7 @@ def use_match():
   locations.current_location['checked'] = False
   locations.chamber["room_openable"].append("trapdoor")
   locations.chamber["room_openable"].append("door")
+  locations.parlour["room_openable"].append("door")
   locations.chamber["room_items"].append("key")
 
 
