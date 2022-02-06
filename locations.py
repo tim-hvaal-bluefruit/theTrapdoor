@@ -32,7 +32,7 @@ parlour = {
   'examine': PARLOUR_TEXT_EXAMINE,
   'checked': False,
   'room_openable': [],
-  'room_items': [],
+  'room_items': ["meat_cleaver", "spider", "crowbar"],
   'exits': [],
   'east': None
 }
@@ -50,3 +50,4 @@ chamber = {
 }
 
 current_location = None
+trapdoor_count = 5

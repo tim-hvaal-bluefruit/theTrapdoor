@@ -1,3 +1,4 @@
+import sys
 import items
 import locations
 
@@ -102,6 +103,10 @@ def get_item(second_word):
     print("i can't see one of those")
     return
 
+  if second_word == "spider":
+    print(items.items["spider"]["examine"])
+    return
+
   locations.current_location['room_items'].remove(second_word)
   items.inv.append(second_word)
   print(f"you got the {second_word}!")
@@ -134,10 +139,13 @@ def use_item(second_word):
   elif second_word == 'key':
     use_key()
 
+  elif second_word == 'crowbar':
+    use_crowbar()
+
   else:
     return
 
-#------------------------------------------------------------------------------- use items
+#------------------------------------------------------------------------------- events
 
 def use_candle():
   print("  you hold the candle in your hands")
@@ -161,7 +169,7 @@ def use_match():
   locations.chamber["room_openable"].append("door")
   locations.parlour["room_openable"].append("door")
   locations.chamber["room_items"].append("key")
-
+  locations.chamber["room_items"].append("skull")
 
 def use_key():
   if items.items["key"]["active"] == False:
@@ -176,4 +184,76 @@ def use_key():
   items.items["key"]["active"] = False
   return
 
-#-------------------------------------------------------------------------------
+def use_crowbar():
+  if "trapdoor" not in locations.current_location["room_openable"]:
+    print("I can't see anything to use this thing with")
+    return
+  elif items.items["crowbar"]["active"] == False:
+    print("  you've already opened the trapdoor")
+    return
+  print("\nyou prise up one corner of the trapdoor with the crowbar! You lift it open fully and peer into the gloomy depths below")
+  items.doors["trapdoor"]["examine"] = items.TRAPDOOR_EXAMINE_ACTIVE
+  items.doors["trapdoor"]["active"] = True
+  items.doors["trapdoor"]["open"] = True
+  items.items["crowbar"]["active"] = False
+  return
+
+
+#------------------------------------------------------------------------------- trapdoor
+
+def trapdoor():
+  if items.items["trapdoor"]["count"] == 6:
+    print("you can hear a distant rumbling under ground...")
+  elif items.items["trapdoor"]["count"] == 5:
+    print("it sounds like giant footsteps...")
+  elif items.items["trapdoor"]["count"] == 4:
+    print("it's getting louder and much closer...")
+  elif items.items["trapdoor"]["count"] == 3:
+    print("something large is drawing near...")
+  elif items.items["trapdoor"]["count"] == 2:
+    print("suddenly everything has gone very quiet...you better do something")
+  elif items.items["trapdoor"]["count"] == 1:
+    if locations.current_location == locations.chamber:
+      print("you see a pair of eyes staring at you, and a grotesque head start to appear out of the trapdoor, you've only got seconds before it is in the room")
+    if locations.current_location == locations.parlour:
+      print("you hold you're breath, something is crawling into the next room")
+  else: #count is 0
+    if locations.current_location == locations.parlour and items.items["door"] == "closed":
+      print("a huge beast smashes straight through the wooden door and dashes towards you. It grabs you in it's hand and drags you back into the trapdoor")
+    print("a large hand appears and drags you towards the trapdoor, you try to hang on but the beast drags you down into the depths")
+    play_again()
+
+  items.items["trapdoor"]["count"] -= 1
+
+def play_again():
+  game_state = input("you've lost the game, would you like to play again? y/n").lower().strip()
+  if game_state == 'y' or 'yes':
+    pass
+  if game_state == 'n' or 'no':
+    sys.exit()
+
+
+# def open
+#   if second_word is trapdoor
+#   (open trapdoor)
+
+# def close
+#   if second word trapdoor
+#     close trapdoor
+
+# def close_trapdoor
+#   if count is 1 
+#     you hit the beast on the head - you hear it hit the ground several seconds later
+#     suddenly the skull opens starts to speak to you, "berk, i told you not to open that trapdoor!"
+#     end screen - "thanks for playing"
+
+#   if count is not 1
+#     you slam the heavy trapdoor with a bang, the banging noises disappear
+#     count = 6, 
+#     trapdoor open = False
+#     trapdoor active = false
+
+# def use_knife
+# if count is 1 
+#   you try to slash at the beast with the carving knife but you hopelessly miss
+

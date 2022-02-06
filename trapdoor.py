@@ -14,6 +14,9 @@ def main():
 
     if locations.current_location['checked'] == False:
       helpers.look()
+    
+    if items.items["trapdoor"]["open"] == True:
+      helpers.trapdoor()
 
     # show options - DEBUG 
     options_text = helpers.make_options_text()

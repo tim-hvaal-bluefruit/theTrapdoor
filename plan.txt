@@ -1,7 +1,7 @@
 FIX-UP
+help - standard text - not specific
 New idea - drop item could solve a puzzle. zelda like puzzle, you need to remember the state of a room in order to proceed
 add parlour items, crowbar, large knife, skull
-open doesn't work - don't bother?
 
 
 NOTE - google error codes when you see them - this is part of Python learning
