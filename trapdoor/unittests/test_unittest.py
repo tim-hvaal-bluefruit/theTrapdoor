@@ -1,32 +1,17 @@
 from typing import Match
 import helpers
+import locations
 from io import StringIO
 import unittest
 from unittest.mock import patch
 
 class Test_LookFunction(unittest.TestCase):
  
-  def test_look__sets_location_changed_to_false(self):
+  def test_that_look__sets_location_checked_to_false(self):
     
+    locations.current_location = locations.chamber
     helpers.look()
-    self.assertEqual(helpers.location['changed'], False)
-
-# what if user just types get
-
-  # def test_look_prints_all_items_available(self): 
-
-  #   with patch('sys.stdout', new = StringIO()) as fake_out:
-  #     trapdoor.look()
-  #     self.assertIn("you can see...\n", fake_out.getvalue())
-
-class Test_user_types_examine_something(unittest.TestCase):
-    
-  def test_that_when_user_types_examine_then_candle_candle_examine_text_is_printed(self):
-
-      #given
-    player_input = "examine candle"
-
-      #when
+    self.assertEqual(locations.current_location['checked'], True)
 
 
 

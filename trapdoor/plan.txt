@@ -1,14 +1,17 @@
-Fix
-What is pycache? Can i hide it from git?
-Add an examine function ... always available. loop through -> room items, room interactive, inv - (display if available)
-standardise text for every object, location and interactable
-amend inventory function to check for inventory description if it's in there
+FIX-UP
+New idea - drop item could solve a puzzle. zelda like puzzle, you need to remember the state of a room in order to proceed
 add parlour items, crowbar, large knife, skull
+open doesn't work - don't bother?
 
 
 NOTE - google error codes when you see them - this is part of Python learning
 
 DONE
+examine working properly
+Add feature to examine room by room name
+Bug with key text - now every item has an inventory description instead
+Add an examine function ... always available. loop through -> room items, room interactive, inv - (display if available)
+What is pycache? Can i hide it from git?
 Use key without key doesn't print any text
 Setup debug to run by hitting button from anywhere
 Add github repo - commit everything so far
@@ -27,3 +30,13 @@ Everything now is much more straightforward!
 
 why can't i change the room easily? remember i was trying to set a variable to equal a string instead of a dict
   KeyError: means you're trying to access an item that doesn't exist
+
+  # ADD NOTES TO NOTION
+######################
+# CTRL SHFT H vs CTRL H - how to do this in CLion, looks like it looks from the project base, can you specify a subfolder
+# bug to fix - picking up items need to change their description
+# can't debug because of circular import problem - how to fix
+# circular imports problem - dont import main module into others etc
+# solved problem of dics containing references to other dicts - has to be set when the item is got
+# or could be set with an init method - better
+######################
