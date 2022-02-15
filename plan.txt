@@ -1,12 +1,38 @@
-FIX-UP
-help - standard text - not specific
-New idea - drop item could solve a puzzle. zelda like puzzle, you need to remember the state of a room in order to proceed
+
+#-------------------------------------------------- TODO ------------------------------------------------------#
+
+COMPLETE GAME SPIKE
+  if count = 1. use crowbar, or use knife should swing at beast but not do anything
+  change meat_cleaver text to knife
+  write a 'help' function
+  turn off actions text
+  basic bug check - consider how to better organise this code - truth tables?
+  pop up trapdoor picture
+
+NICE WRAPPER
+  add a pygame wrapper and a window
+  add pauses into text and better spacing
+  improve the font
+  use pyinstaller to make it an actual executable game
+
+GAME +1
+  change the story completely, new rooms, better puzzle, prison break sort of thing - i've got the right framework
+  sound effects - basic animation?
+  New idea - drop item could solve a puzzle. zelda like puzzle, \
+       you need to remember the state of a room in order to proceed
+
+
+
+#-------------------------------------------------- DONE ------------------------------------------------------#
+
+
+win condition implemented - close the trapdoor at the right time
+create close function - make subfunctions and test them
+new functions for use cleaver and add to use crowbar
+win game scenario
+open function - it's weird you can't open door and trapdoor
+add trapdoor function - you can now lose the game
 add parlour items, crowbar, large knife, skull
-
-
-NOTE - google error codes when you see them - this is part of Python learning
-
-DONE
 examine working properly
 Add feature to examine room by room name
 Bug with key text - now every item has an inventory description instead
@@ -17,41 +43,19 @@ Setup debug to run by hitting button from anywhere
 Add github repo - commit everything so far
 
 
+#-------------------------------------------------- NOTES FOR NOTION ------------------------------------------------------#
 
-crowbar trapdoor, sets counter 7 moves.
-check timer - when 7 monster comes and knocks you out - game over
-close trapdoor, checks timer, if 7 hits monster on head, you win
-final easter egg, guess characters name, if Burk you get pic and sound playing
-package up into final playable package
-now i've made this, i can make something quite a lot better! but can i be bothered? yeah map it out!
-pygame shell!
 
-Everything now is much more straightforward!
+How to change the indentation (tab size in workspace settings)
+    Q then, where are workspace settings stored?
+Installed autopep8 - to apply SHIFT ALT F
+NOTE - google error codes when you see them - this is part of Python learning
+CTRL SHFT H vs CTRL H - how to do this in CLion, looks like it looks from the project base, can you specify a subfolder
+bug to fix - picking up items need to change their description
+can't debug because of circular import problem - how to fix
+circular imports problem - dont import main module into others etc
+solved problem of dics containing references to other dicts - has to be set when the item is got
+or could be set with an init method - better
 
 why can't i change the room easily? remember i was trying to set a variable to equal a string instead of a dict
   KeyError: means you're trying to access an item that doesn't exist
-
-  # ADD NOTES TO NOTION
-######################
-# CTRL SHFT H vs CTRL H - how to do this in CLion, looks like it looks from the project base, can you specify a subfolder
-# bug to fix - picking up items need to change their description
-# can't debug because of circular import problem - how to fix
-# circular imports problem - dont import main module into others etc
-# solved problem of dics containing references to other dicts - has to be set when the item is got
-# or could be set with an init method - better
-######################
-
-
-use sleep to build suspense
-truth tables?
-Part 2...
-  key to open another door, human skull in there, table with blood on it and a large spider scuttling around, get spider, get skull, get knife, can't do anything further
-  check trapdoor every loop
-  if open count to five. If shut, reset the count
-  trapdoor function runs each loop, player msg depending on the count
-  if monster comes out you get eaten
-  if you close the trapdoor on count of five you hit the monster on the head and win
-  winning message. You closed the door just in time just a huge slimy creature was coming up through the door. The weight of the door must have crushed the monsters head,
-  you hear a loud thud a few seconds later as the beast hit the floor some way below. 
-  You've won the game, but always remember - stay away from that trapdoor... cuz there's something down there
-  Easter egg... what's your name - if answer = Burk print end_screen.

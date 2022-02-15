@@ -7,5 +7,10 @@
     "test_*.py"
   ],
   "python.testing.pytestEnabled": false,
-  "python.testing.unittestEnabled": true
+  "python.testing.unittestEnabled": true,
+
+  "workbench.statusBar.visible": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#014d14"
+  }
 }

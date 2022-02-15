@@ -1,4 +1,5 @@
-#------------------------------------------------------------------------------- descriptions
+#-------------------------------------------------- ROOM DESCRIPTIONS ------------------------------------------------------#
+
 
 CHAMBER_TEXT_DARK ='''
 the chamber is cold and dark...'''
@@ -21,7 +22,8 @@ PARLOUR_TEXT_EXAMINE ='''
 it's a large stone room, there are surfaces for preparing food...'''
 
 
-#------------------------------------------------------------------------------- state
+#-------------------------------------------------- LOCATION STATE  ------------------------------------------------------#
+
 
 light_source = False
 
@@ -32,7 +34,7 @@ parlour = {
   'examine': PARLOUR_TEXT_EXAMINE,
   'checked': False,
   'room_openable': [],
-  'room_items': ["meat_cleaver", "spider", "crowbar"],
+  'room_items': ["knife", "spider", "crowbar"],
   'exits': [],
   'east': None
 }
@@ -50,4 +52,3 @@ chamber = {
 }
 
 current_location = None
-trapdoor_count = 5

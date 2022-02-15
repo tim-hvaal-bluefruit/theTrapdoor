@@ -1,11 +1,14 @@
 
-#------------------------------------------------------------------------------- general template
+#-------------------------------------------------- GENERAL TEMPLATE  ------------------------------------------------------#
+
 
 NAME = "- "
 NAME_INV = "- "
 NAME_EXAMINE = ""
 
-#------------------------------------------------------------------------------- chamber descriptions
+
+#-------------------------------------------------- CHAMBER ------------------------------------------------------#
+
 
 CANDLE = "- a small unlit candle"
 CANDLE_EXAMINE = "it's on a candlestick so i can carry it around with me"
@@ -30,11 +33,13 @@ TRAPDOOR = "- a huge trapdoor in the ground"
 TRAPDOOR_EXAMINE_INACTIVE = "it's very heavy, you can't budge it"
 TRAPDOOR_EXAMINE_ACTIVE = "you've opened it wide open - you can't see anything down there but gloom"
 
-#------------------------------------------------------------------------------- parlour descriptions
 
-MEAT_CLEAVER = "- a menacing meat cleaver lying in a pool of blood"
-MEAT_CLEAVER_INV = "- a large meat cleaver"
-MEAT_CLEAVER_EXAMINE = "i'll chop my leg off with this if i'm not careful"
+#-------------------------------------------------- PARLOUR ------------------------------------------------------#
+
+
+KNIFE = "- a menacing meat cleaver lying in a pool of blood"
+KNIFE_INV = "- a large meat cleaver"
+KNIFE_EXAMINE = "i'll chop my leg off with this if i'm not careful"
 
 SKULL = "- a human skull stood upright in an alcove"
 SKULL_INV = "- a human skull"
@@ -47,7 +52,9 @@ CROWBAR = "- a crowbar"
 CROWBAR_INV = "- a crowbar"
 CROWBAR_EXAMINE = " i could do some damage with this thing"
 
-#------------------------------------------------------------------------------- state
+
+#-------------------------------------------------- ITEM STATE ------------------------------------------------------#
+
 
 items = {
 
@@ -79,10 +86,10 @@ items = {
     "active": True
   },
 
-  'meat_cleaver': {
-    "description": MEAT_CLEAVER,
-    "description_inv": MEAT_CLEAVER_INV,
-    "examine": MEAT_CLEAVER_EXAMINE,
+  'knife': {
+    "description": KNIFE,
+    "description_inv": KNIFE_INV,
+    "examine": KNIFE_EXAMINE,
     "active": True
   },
 
@@ -101,6 +108,10 @@ items = {
   },
 }
 
+
+#-------------------------------------------------- ITEM STATE ------------------------------------------------------#
+
+
 doors = {
 
   "trapdoor": {
@@ -108,7 +119,8 @@ doors = {
     "examine": TRAPDOOR_EXAMINE_INACTIVE,
     "open": False,
     "active": False,
-    "count": 5
+    "count": 7,
+    "win": False
     },
 
   "door": {
@@ -116,7 +128,11 @@ doors = {
     "examine": DOOR1_EXAMINE_LOCKED,
     "open": False,
     "active": False
+
     }
 }
+
+#-------------------------------------------------- INV LIST ------------------------------------------------------#
+
 
 inv = []
