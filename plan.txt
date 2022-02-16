@@ -2,14 +2,9 @@
 #-------------------------------------------------- TODO ------------------------------------------------------#
 
 COMPLETE GAME SPIKE
-  if count = 1. use crowbar, or use knife should swing at beast but not do anything
-  change meat_cleaver text to knife
-  write a 'help' function
-  turn off actions text
-  basic bug check - consider how to better organise this code - truth tables?
-  pop up trapdoor picture
-
-NICE WRAPPER
+  basic bug check
+  consider how to better organise this code - with classes etc
+  add constant for spacing woes - otherwise it'll get out of hand - maybe wait for pygame wrapper
   add a pygame wrapper and a window
   add pauses into text and better spacing
   improve the font
@@ -21,11 +16,16 @@ GAME +1
   New idea - drop item could solve a puzzle. zelda like puzzle, \
        you need to remember the state of a room in order to proceed
 
-
-
 #-------------------------------------------------- DONE ------------------------------------------------------#
 
-
+pop up trapdoor picture
+tidy up how you can win and lose
+moved trapdoor func to events
+game tidyup
+write a 'help' function
+turn off actions text if not in debug
+if count = 1. use knife should swing at beast but not do anything
+change meat_cleaver text to knife
 win condition implemented - close the trapdoor at the right time
 create close function - make subfunctions and test them
 new functions for use cleaver and add to use crowbar
@@ -45,7 +45,8 @@ Add github repo - commit everything so far
 
 #-------------------------------------------------- NOTES FOR NOTION ------------------------------------------------------#
 
-
+__debug__ attribute - appears to always be set to true. Supposedly running with -O (optimise) will set to False - but didn't work
+add args to python launch in launch.json "args": [list],
 How to change the indentation (tab size in workspace settings)
     Q then, where are workspace settings stored?
 Installed autopep8 - to apply SHIFT ALT F

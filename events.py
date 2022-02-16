@@ -118,3 +118,39 @@ def close_trapdoor():
         print("you slam the heavy trapdoor with a bang, the strange noises start to recede into the distance")
         items.doors["trapdoor"]["count"] = 7
         items.doors["trapdoor"]["open"] = False
+
+
+#-------------------------------------------------- TRAPDOOR EVENT ------------------------------------------------------#
+
+
+def trapdoor():
+    if items.doors["trapdoor"]["count"] == 6:
+        print("\nyou can hear a distant rumbling under ground...")
+
+    elif items.doors["trapdoor"]["count"] == 5:
+        print("\nit sounds like giant footsteps...")
+
+    elif items.doors["trapdoor"]["count"] == 4:
+        print("\nit's getting louder and much closer...")
+
+    elif items.doors["trapdoor"]["count"] == 3:
+        print("\nsomething large is drawing near...")
+
+    elif items.doors["trapdoor"]["count"] == 2:
+        print("\nsuddenly everything has gone very quiet... ")
+
+    elif items.doors["trapdoor"]["count"] == 1:
+
+        if locations.current_location == locations.chamber:
+            print("\nyou look down to see an enormous pair of eyes staring at you and a grotesque head emerge above the level of the floor, what will you do?!")
+
+        if locations.current_location == locations.parlour:
+            print("\nyou hold you're breath, something is crawling into the next room")
+
+    else:  # count is 0
+
+        if locations.current_location == locations.parlour and items.doors["door"] == "closed":
+            print("\na huge beast smashes straight through the wooden door and dashes towards you. It grabs you in it's hand and drags you back into the trapdoor")
+
+        print("\na large hand appears and drags you towards the trapdoor, you try to hang on but the beast drags you down into the depths")
+        items.doors["trapdoor"]["lose"] = True

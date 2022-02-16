@@ -8,6 +8,7 @@
       "name": "Python: trapdoor",
       "type": "python",
       "request": "launch",
+      "args": ["-O"],
       "program": "${workspaceFolder}/trapdoor.py",
       "console": "integratedTerminal"
     },

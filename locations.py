@@ -2,24 +2,24 @@
 
 
 CHAMBER_TEXT_DARK ='''
-the chamber is cold and dark...'''
+    the chamber is cold and dark...'''
 
 CHAMBER_TEXT_LIGHT ='''
-the chamber is cold and dark... but after a moment your eyes adjust to the gloom,
-you start to make out a large wooden trapdoor in the centre of the room,
-beyond that is a small wooden door.'''
+    the chamber is cold and dark... but after a moment your eyes adjust to the gloom,
+    you start to make out a large wooden trapdoor in the centre of the room,
+    beyond that is a small wooden door.'''
 
 CHAMBER_TEXT_EXAMINE_DARK ='''
-it's dark and cold, but your footsteps echo as you walk on the stone floor'''
+    it's dark and cold, but your footsteps echo as you walk on the stone floor'''
 
 CHAMBER_TEXT_EXAMINE_LIGHT ='''
-it's a large chamber with stone walls, it's so cold you can see you're breath'''
+    it's a large chamber with stone walls, it's so cold you can see you're breath'''
 
 PARLOUR_TEXT ='''
-you are in a parlour...'''
+    you are in a parlour...'''
 
 PARLOUR_TEXT_EXAMINE ='''
-it's a large stone room, there are surfaces for preparing food...'''
+    it's a large stone room, there are surfaces for preparing food...'''
 
 
 #-------------------------------------------------- LOCATION STATE  ------------------------------------------------------#

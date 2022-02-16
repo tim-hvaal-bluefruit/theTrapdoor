@@ -37,8 +37,8 @@ TRAPDOOR_EXAMINE_ACTIVE = "you've opened it wide open - you can't see anything d
 #-------------------------------------------------- PARLOUR ------------------------------------------------------#
 
 
-KNIFE = "- a menacing meat cleaver lying in a pool of blood"
-KNIFE_INV = "- a large meat cleaver"
+KNIFE = "- a menacing looking knife lying in a pool of blood"
+KNIFE_INV = "- a large butchers knife"
 KNIFE_EXAMINE = "i'll chop my leg off with this if i'm not careful"
 
 SKULL = "- a human skull stood upright in an alcove"
@@ -120,7 +120,8 @@ doors = {
     "open": False,
     "active": False,
     "count": 7,
-    "win": False
+    "win": False,
+    "lose": False
     },
 
   "door": {
@@ -131,6 +132,7 @@ doors = {
 
     }
 }
+
 
 #-------------------------------------------------- INV LIST ------------------------------------------------------#
 

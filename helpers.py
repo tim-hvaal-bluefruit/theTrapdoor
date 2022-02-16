@@ -10,11 +10,14 @@ import events
 def make_options_text() -> str:
 
     options_list = make_options_list()
+    options_text = "\nWhat would you like to do? "
 
-    options_text = "\nWhat would you like to do? ("
-    for i in options_list:
-        options_text += ("'" + i + "'  ")
-    options_text += '): '
+    if __debug__ == False:  # hack - can't find out how to do this so doing it manually
+        options_text += "("
+        for i in options_list:
+            options_text += ("'" + i + "'  ")
+        options_text += '): '
+
     return options_text
 
 
@@ -39,7 +42,24 @@ def make_options_list() -> list[str]:
         for exit in locations.current_location['exits']:
             options_list.append(exit)
 
+    options_list.append('h')
+    options_list.append('help')
+ 
     return options_list
+
+
+#-------------------------------------------------- HELP ------------------------------------------------------#
+
+
+def help():
+
+    options_text = "    you've always got options... at the moment you can use these actions... "
+    options_list = make_options_list()
+    for i in options_list:
+        options_text += ("'" + i + "'  ")
+    options_text += "\n    you can combine some actions with items or objects but you'll never need more than two words at once"
+    print(options_text)
+
 
 
 #-------------------------------------------------- LOOK ------------------------------------------------------#
@@ -50,12 +70,13 @@ def look():
     print(locations.current_location["look"])
 
     if len(locations.current_location['room_items']) != 0:
-        print("you can see...")
+        print("    you can see...")
         for item in locations.current_location['room_items']:
-            print(items.items[item]['description'])
+            print(f"    {items.items[item]['description']}")
+
 
     if len(locations.current_location['exits']) != 0:
-        print("you can go ", end='')
+        print("    you can go ", end='')
         for exit in locations.current_location['exits']:
             print(exit, ' ')
 
@@ -83,7 +104,7 @@ def examine(second_word):
             and second_word not in locations.current_location["room_openable"]):
 
         print(
-            "examine what? (hint: you can examine nearby things or items you are carrying)")
+            "    examine what? (hint: you can examine nearby things or items you are carrying)")
         return
 
     if second_word in items.inv:
@@ -102,12 +123,12 @@ def examine(second_word):
 def check_inv():
 
     if len(items.inv) == 0:
-        print("you aren't carrying anything")
+        print("    you aren't carrying anything")
         return
 
-    print("\nyou are carrying:")
+    print("    you are carrying:")
     for item in items.inv:
-        print("  ", items.items[item]["description_inv"])
+        print("    ", items.items[item]["description_inv"])
 
 
 #-------------------------------------------------- OPEN ------------------------------------------------------#
@@ -116,7 +137,7 @@ def check_inv():
 def open(second_word):
 
     if second_word not in locations.current_location['room_openable']:
-        print("i'm not sure i can open that")
+        print("    i'm not sure i can open that")
         return
 
     if items.doors[second_word]["active"] == False:
@@ -124,7 +145,7 @@ def open(second_word):
         return
 
     if items.doors[second_word]["open"] == True:
-        print("looks like it's already open")
+        print("    looks like it's already open")
         return
 
     if second_word == "trapdoor":
@@ -142,13 +163,13 @@ def open(second_word):
 def close(second_word):
 
     if second_word not in locations.current_location['room_openable']:
-        print("i'm not sure i can close that")
+        print("    i'm not sure i can close that")
 
     elif items.doors[second_word]["active"] == False:
-        print("it's already closed and you can't open it")
+        print("    it's already closed and you can't open it")
 
     elif items.doors[second_word]["open"] == False:
-        print("it's already closed")
+        print("    it's already closed")
         return
 
     if second_word == "trapdoor":
@@ -164,7 +185,7 @@ def close(second_word):
 def get_item(second_word):
 
     if second_word not in locations.current_location['room_items']:
-        print("i can't see one of those")
+        print("    i can't see one of those")
         return
 
     if second_word == "spider":
@@ -173,7 +194,7 @@ def get_item(second_word):
 
     locations.current_location['room_items'].remove(second_word)
     items.inv.append(second_word)
-    print(f"you got the {second_word}!")
+    print(f"    you got the {second_word}!")
 
 
 #-------------------------------------------------- MOVE ------------------------------------------------------#
@@ -182,7 +203,7 @@ def get_item(second_word):
 def move(first_word):
 
     if first_word not in locations.current_location['exits']:
-        print("you can't go that way")
+        print("    you can't go that way")
         return
 
     locations.current_location = locations.current_location[first_word]
@@ -195,7 +216,7 @@ def move(first_word):
 def use_item(second_word):
 
     if second_word not in items.inv:
-        print("i don't seem to have one of those")
+        print("    i don't seem to have one of those")
         return
 
     if second_word == 'candle':
