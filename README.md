@@ -1,3 +1,6 @@
-# welcome to The TrapDoor
-... a super simple text adventure with a twist
-... (you need python 3 - just click run in VScode)
+## welcome to 'The Trap Door' ...
+a super simple text adventure with a twist
+### to run...
+install python 3, add python to path  
+install and run VSCode  
+click run in VSCode
